@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Övning 3 - Kombinera Container Queries & clamp()</title>
+    <style>
+    /* Din CSS här */
+    body {
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .card-container {
+        outline: 2px solid green;
+        width: 300px;
+        width: 700px;            
+        container: cardcontainer /  inline-size;
+        
+    }
+
+    .card {        
+        background-color: lightgreen;        
+    }
+
+    h2, p {
+        font-size: clamp(1cqi, 2cqi, 3cqi);
+    }
+
+    @container cardcontainer (inline-size < 400px) {
+        .card {
+            background-color: lightyellow;            
+        }
+
+        h2, p {
+            font-size: clamp(3cqi, 4cqi, 5cqi);
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="card-container">
+        <div class="card">
+            <h2>Flexibelt kort</h2>
+            <p>Texten är både responsiv och container-anpassad.</p>
+        </div>
+    </div>
+</body>
+
+</html>
